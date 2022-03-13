@@ -37,7 +37,7 @@ def random_word(word_data, limit):
     return (word, definition)
 
 if __name__ == "__main__":
-    f = open("word_list.json")
+    f = open("data/word_list.json")
     data = json.load(f)
     while True:
         pair = random_word(data, 1162)
