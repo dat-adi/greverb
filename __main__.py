@@ -23,22 +23,15 @@ def prompt(pair):
 def random_word(word_data, limit):
     """Picking from the JSON word list"""
     ran_no = randint(0, limit)
-    count = 0
-    word = ""
-    definition = ""
-
-    for i in word_data:
-        word = i["word"]
-        definition = i["definition"].rstrip()
-        count += 1
-        if count == ran_no:
-            break
-
-    return (word, definition)
+    random_word = word_data[ran_no]
+    return (random_word["word"], random_word["definition"])
 
 if __name__ == "__main__":
-    f = open("data/word_list.json")
-    data = json.load(f)
-    while True:
-        pair = random_word(data, 1162)
-        prompt(pair)
+    try:
+        with open("./data/word_list.json") as f:
+            data = json.load(f)
+            while True:
+                pair = random_word(data, 1162)
+                prompt(pair)
+    except KeyboardInterrupt:
+        print("Well, that's something. Do something.")
