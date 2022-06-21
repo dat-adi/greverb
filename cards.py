@@ -3,6 +3,7 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.console import Console
 from rich.prompt import Prompt
+from rich.table import Table
 
 from random import randint
 from time import sleep
@@ -31,20 +32,25 @@ def retrieval():
 
 def prompt(word, meaning, example):
     """The prompt for the guessing"""
-    word = Panel(Text(word, style="bold magenta"))
-    meaning = Panel(Text(meaning))
-    example = Panel(Text(example))
+    word = Text(word, style="bold magenta")
+    meaning = Text(meaning)
+    example = Text(example)
+
+    table = Table(title=word)
+    table.add_column("Type", style="cyan")
+    table.add_column("Meaning", style="magenta")
+    table.add_column("Example", style="green", no_wrap=True)
+
+    table.add_row("From the Source", meaning, example)
 
     console = Console()
     with console.screen():
-        console.print(word)
+        console.print(f"The word is \"{word}\"")
         user_meaning = Prompt.ask("Enter your guess for the meaning")
+        user_meaning = Text(user_meaning)
+        table.add_row("Your response", user_meaning, "-")
         console.clear()
-        console.print(word)
-        console.print(meaning)
-        user_meaning = Panel(Text(user_meaning))
-        console.print(user_meaning)
-        console.print(example)
+        console.print(table)
         sleep(5)
 
 if __name__ == "__main__":

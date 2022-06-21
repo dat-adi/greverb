@@ -1,6 +1,9 @@
 default: ## Run app
 	. ./venv/bin/activate && python __main__.py
 
+cards: ## Runs the GRE cards
+	. ./venv/bin/activate && python cards.py
+
 env: ## Sets up an environment
 	@-virtualenv venv
 	. ./venv/bin/activate && pip install -r requirements.txt
