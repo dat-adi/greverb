@@ -1,5 +1,3 @@
-from rich import print
-from rich.panel import Panel
 from rich.text import Text
 from rich.console import Console
 from rich.prompt import Prompt
@@ -7,7 +5,6 @@ from rich.table import Table
 
 from random import randint
 from time import sleep
-import json
 
 def random_word(words):
     """Picking from the word list"""

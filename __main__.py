@@ -16,9 +16,9 @@ def prompt(pair):
     console = Console()
     with console.screen():
         console.print(word)
-        sleep(5)
+        sleep(1)
         console.print(definition)
-        sleep(5)
+        sleep(10)
 
 def random_word(word_data, limit):
     """Picking from the JSON word list"""
