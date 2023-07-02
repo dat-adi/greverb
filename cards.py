@@ -12,7 +12,7 @@ def random_word(words):
 
 def retrieval():
     """Method to retrieve elements from the text file"""
-    with open("./data/violet_cards.txt") as f:
+    with open("./data/violet_cards.org") as f:
         lines = f.readlines()
 
     words: list = []
